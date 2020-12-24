@@ -29,7 +29,7 @@ var colorlink = getQueryVariable("color");
   var post_summary = true;   
   var summary_chars = 70;   
 
-	      var head = document.getElementsByTagName('head').item(0);
+	      var head = document.getElementsByTagName('body').item(0);
     var script = document.createElement('script');
     script.setAttribute('type', 'text/javascript');
     script.setAttribute('src', domain+"feeds/posts/default?orderby=published&alt=json-in-script&callback=showlatestpostswiththumbs");
@@ -39,7 +39,6 @@ var colorlink = getQueryVariable("color");
   </script>   
   <a style="font-size: 9px; color: #CECECE; margin-top: 10px;" href="http://helplogger.blogspot.com/2014/11/5-cool-recent-post-widgets-for-blogger.html" rel="nofollow">Recent Posts Widget</a>   
   <noscript>Your browser does not support JavaScript!</noscript>   
-  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css' />   
   <style type="text/css">   
   img.recent-post-thumb{width:50px;height:50px;float:right;margin:5px -5px 0px 0px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;padding:3px;background: #fff}   
   ul.recent-posts-container {list-style-type: none; background: #fff;padding: 0px;font:12px 'Ubuntu Condensed', sans-serif;margin: 5px 0px 5px 0px;}   
