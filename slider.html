@@ -113,21 +113,7 @@ console.log(domain);
            num = data.split('/')[1];
            var cat = select.slice(0, b1).trim();
            var cat = cat + select.slice(b2 + 1, select.length ).trim();   
-           if (type == "ticker") {
-                          var s = document.createElement("script");
-            s.type = "text/javascript";
-            if (cat == 'recent') {
-               s.src = getQueryVariable("url")+"/feeds/posts/default?&max-results=" + num+"&alt=json-in-script&callback=ticker_feeds";
-            }else if(cat == 'random'){
-                var random_index = Math.floor((Math.random() * num) + 1);
-                s.src = getQueryVariable("url")+"/feeds/posts/default?alt=json-in-script&orderby=updated&start-index=" + random_index + "&max-results=" + num+"&callback=ticker_feeds";
-            }else{
-              s.src = getQueryVariable("url")+"/feeds/posts/summary/-/" + cat + "?alt=json-in-script&max-results=" + num+"&callback=ticker_feeds";
 
-            }
-            document.body.appendChild(s);
-
-           }else{
 
             if (cat.length > 1 ) {
                 var s = document.createElement("script");
@@ -140,7 +126,7 @@ console.log(domain);
                 }else{
                   s.src = "/feeds/posts/summary/-/" + cat + "?alt=json-in-script&max-results=" + num+"&callback=light_feeds";
 
-                }
+          console.log(s)      
 document.write(s);
             }
         }
