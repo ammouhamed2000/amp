@@ -104,7 +104,7 @@ console.log(domain);
 	
 var s = document.createElement("script");
 s.type = "text/javascript";
-    s.src = "/feeds/posts/default?&max-results=3&alt=json-in-script&callback=light_feeds";
+    s.src = getQueryVariable("url")+"/feeds/posts/default?&max-results=3&alt=json-in-script&callback=light_feeds";
 
 console.log(s)      
 document.body.appendChild(s);
