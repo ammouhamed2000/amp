@@ -15,6 +15,78 @@ body {
 iframe{border:0;}
 </style>
 <script>
+	
+	function Ticker( element ) {
+		this.el = document.getElementById( element );
+		this.init();
+	}
+
+	Ticker.prototype = {
+		init: function() {
+			this.items = this.el.getElementsByTagName( "li" );
+			this.wrapper = document.getElementById( "ticker-wrapper-inner" );
+			this.totalItems = this.items.length;
+			this.timer = null;
+			this.index = 0;
+
+			this.tick();
+			this.hover();
+
+			
+		},
+
+		tick: function() {
+			var self = this;
+			self._setElementOffsets();
+
+			self.timer = setInterval(function() {
+				self.index++;
+
+				if( self.index == self.totalItems ) {
+					self.index = 0;
+				}
+
+
+				var item = self.items[self.index];
+				var top = item.getAttribute( "data-top" );
+				self.wrapper.style.top = "-" + top + "px";
+
+			}, 3500 );
+		},
+
+		hover: function() {
+			var self = this;
+			var li = self.items;
+
+			for( var i = 0; i < self.totalItems; ++i ) {
+				var item = li[i];
+				item.addEventListener( "mouseover", function() {
+					clearInterval( self.timer );
+					self.timer = null;
+
+				}, false);
+				item.addEventListener( "mouseout", function() {
+					self.tick();
+
+				}, false);
+			}	
+		},
+
+		_setElementOffsets: function() {
+			var self = this;
+			var li = self.items;
+
+			for( var i = 0; i < self.totalItems; ++i ) {
+				var item = li[i];
+				var top = item.offsetTop;
+
+				item.setAttribute( "data-top", top -41);
+				item.setAttribute("id", 'item'+(top -41));
+				item.setAttribute("class", 'item_row');
+
+			}
+		}
+	};
 function getQueryVariable(variable) {
 	var query = window.location.search.substring(1);
 	var vars = query.split("&");
@@ -27,6 +99,61 @@ function getQueryVariable(variable) {
 var domain = getQueryVariable("url");
 var colorlink = getQueryVariable("color");
 console.log(domain);
+	
+	
+	
+	document.querySelectorAll('.layout_main .widget-content').forEach(function(element, index) {
+    var select = element.textContent;
+    if (select.length >0) {
+        var b1 = select.indexOf("["),
+            b2 = select.indexOf("]");
+        if (b1 != -1 && b2 != -1) {
+           var data =  select.slice(b1 + 1, b2).trim(),
+           type = data.split('/')[0],
+           num = data.split('/')[1];
+           var cat = select.slice(0, b1).trim();
+           var cat = cat + select.slice(b2 + 1, select.length ).trim();   
+           if (type == "ticker") {
+                          var s = document.createElement("script");
+            s.type = "text/javascript";
+            if (cat == 'recent') {
+               s.src = getQueryVariable("url")+"/feeds/posts/default?&max-results=" + num+"&alt=json-in-script&callback=ticker_feeds";
+            }else if(cat == 'random'){
+                var random_index = Math.floor((Math.random() * num) + 1);
+                s.src = getQueryVariable("url")+"/feeds/posts/default?alt=json-in-script&orderby=updated&start-index=" + random_index + "&max-results=" + num+"&callback=ticker_feeds";
+            }else{
+              s.src = getQueryVariable("url")+"/feeds/posts/summary/-/" + cat + "?alt=json-in-script&max-results=" + num+"&callback=ticker_feeds";
+
+            }
+            document.body.appendChild(s);
+
+           }else{
+
+            if (cat.length > 1 ) {
+                var s = document.createElement("script");
+                s.type = "text/javascript";
+                if (cat == 'recent') {
+                   s.src = "/feeds/posts/default?&max-results=" + num+"&alt=json-in-script&callback=light_feeds";
+                }else if(cat == 'random'){
+                    var random_index = Math.floor((Math.random() * num) + 1);
+                    s.src = "/feeds/posts/default?alt=json-in-script&orderby=updated&start-index=" + random_index + "&max-results=" + num+"&callback=light_feeds";
+                }else{
+                  s.src = "/feeds/posts/summary/-/" + cat + "?alt=json-in-script&max-results=" + num+"&callback=light_feeds";
+
+                }
+                document.body.appendChild(s);
+
+            }
+        }
+
+        }
+    }
+});
+
+	
+	
+	
+	
 </script>
 </head>
 <body>
