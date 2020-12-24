@@ -107,7 +107,7 @@ s.type = "text/javascript";
     s.src = getQueryVariable("url")+"feeds/posts/default?&max-results=3&alt=json-in-script&callback=light_feeds";
 
 console.log(s)      
-document.write(s);
+document.write(s.innerHTML);
 
 	function light_feeds(e) {
 		console.log("ffffffffffffffff")      
