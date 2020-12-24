@@ -191,6 +191,17 @@ span.date a {
     color: #fff!important;
     margin-bottom: 6px;
     display: block;
+}.item_slider.item_slider_grid .data_content {
+    position: absolute;
+    bottom: 0;
+    padding: 24px 18px;
+    z-index: 9;
+    width: 100%;
+    text-align: right;
+}
+.author_grid img.lazy {
+    float: right;
+    margin-left: 5px;
 }
 	</style>
 </head>
@@ -280,7 +291,7 @@ domp.className = "col col-lg-6 col-md-12 col-sm-12";
 
 domp.className = "col col-lg-3 col-md-12 col-sm-12";
 
-var part_content = '<div class="item_slider item_list"><div class="row_item"><div class="layout_grid"><span class="cat_grid"><a href="'+cat_link+'">'+cat+'</a></span><div class="layout_grid" style="background-image: url(' +  img_size(img, "258", "260") + ')"><a href="' + link + '"></a></div></div><div class="data_content"><h3 class="sl_title"><a alt="'+title+'" href="'+link+'">'+ title +'</a></h3><div class="other_data"><div class="author_grid"><span><img alt="" class="lazy" data-src="' + img_size(getAuthorImg,"35","35") + '"/><span  class="author-date a-d-b"><div class="date_grid"><span class="date"><a href="'+archive+'">'+date+'</a></span></div><a class="author_a" href="'+getAuthorUrl+'">'+getAuthor+'</a></span></span></div></div></div></div></div>';
+var part_content = '<div class="item_slider item_list"><div class="row_item"><div class="layout_grid"><span class="cat_grid"><a href="'+cat_link+'">'+cat+'</a></span><div class="layout_grid" style="background-image: url(' +  img_size(img, "258", "260") + ')"><a href="' + link + '"></a></div></div><div class="data_content"><h3 class="sl_title"><a alt="'+title+'" href="'+link+'">'+ title +'</a></h3><div class="other_data"><div class="author_grid"><span><img alt="" class="lazy" src="' + img_size(getAuthorImg,"35","35") + '"/><span  class="author-date a-d-b"><div class="date_grid"><span class="date"><a href="'+archive+'">'+date+'</a></span></div><a class="author_a" href="'+getAuthorUrl+'">'+getAuthor+'</a></span></span></div></div></div></div></div>';
 }
 
 
