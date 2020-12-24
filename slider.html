@@ -107,7 +107,8 @@ s.type = "text/javascript";
     s.src = "/feeds/posts/default?&max-results=3&alt=json-in-script&callback=light_feeds";
 
 console.log(s)      
-document.write(s);	
+document.body.appendChild(s);
+
 	
 	
 	
