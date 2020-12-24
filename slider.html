@@ -102,40 +102,12 @@ console.log(domain);
 	
 	
 	
-	document.querySelectorAll('.layout_main .widget-content').forEach(function(element, index) {
-    var select = element.textContent;
-    if (select.length >0) {
-        var b1 = select.indexOf("["),
-            b2 = select.indexOf("]");
-        if (b1 != -1 && b2 != -1) {
-           var data =  select.slice(b1 + 1, b2).trim(),
-           type = data.split('/')[0],
-           num = data.split('/')[1];
-           var cat = select.slice(0, b1).trim();
-           var cat = cat + select.slice(b2 + 1, select.length ).trim();   
+var s = document.createElement("script");
+s.type = "text/javascript";
+    s.src = "/feeds/posts/default?&max-results=3&alt=json-in-script&callback=light_feeds";
 
-
-            if (cat.length > 1 ) {
-                var s = document.createElement("script");
-                s.type = "text/javascript";
-                if (cat == 'recent') {
-                   s.src = "/feeds/posts/default?&max-results=" + num+"&alt=json-in-script&callback=light_feeds";
-                }else if(cat == 'random'){
-                    var random_index = Math.floor((Math.random() * num) + 1);
-                    s.src = "/feeds/posts/default?alt=json-in-script&orderby=updated&start-index=" + random_index + "&max-results=" + num+"&callback=light_feeds";
-                }else{
-                  s.src = "/feeds/posts/summary/-/" + cat + "?alt=json-in-script&max-results=" + num+"&callback=light_feeds";
-
-          console.log(s)      
-document.write(s);
-            }
-        }
-
-        }
-    }
-});
-
-	
+console.log(s)      
+document.write(s);	
 	
 	
 	
