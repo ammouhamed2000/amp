@@ -218,9 +218,30 @@ span.date a {
     max-width: 100%;
 }
 	.col.col-lg-3.col-md-12.col-sm-12 {
+    display: none;
+}
+.col.col-lg-3.col-md-12.col-sm-12:nth-of-type(1) {
+    display: block;
+}.item_slider.item_list .row_item {
+    height:200px;
+    margin-bottom: 9px;
+}
+	.col.col-lg-3.col-md-12.col-sm-12 {
     max-width: 100%;
 		width: 100%;}
 }
+		@media (max-width:576px){
+			.col.col-lg-3.col-md-12.col-sm-12 .data_content {
+    position: absolute;
+    bottom: auto;
+    right: 0;
+    top: 0;
+    text-align: right;
+    padding: 15px 17px;
+}span.cat_grid a {
+    display: none;
+}
+		}
 	</style>
 </head>
 <body>
